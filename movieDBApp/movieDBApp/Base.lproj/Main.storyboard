@@ -20,34 +20,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLe-ux-KIP">
-                                <rect key="frame" x="236" y="371" width="128" height="30"/>
-                                <state key="normal" title="Search for a movie"/>
-                                <connections>
-                                    <action selector="searchTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DF9-DM-3Nh"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TMDb" translatesAutoresizingMaskIntoConstraints="NO" id="D3o-Ph-4KR">
-                                <rect key="frame" x="150" y="72" width="300" height="225"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="film-reel-2" translatesAutoresizingMaskIntoConstraints="NO" id="dcW-Rm-3oH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="190" id="6ua-AU-ENy"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6ua-AU-ENy"/>
+                                    </mask>
+                                </variation>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aJQ-eL-E6Z">
-                                <rect key="frame" x="60" y="319" width="480" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="5nu-z4-Vxx"/>
-                                </connections>
-                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKj-Ql-Xwg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLe-ux-KIP">
+                                        <rect key="frame" x="236" y="359" width="128" height="30"/>
+                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                        <state key="normal" title="Search for a movie">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DF9-DM-3Nh"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for a movie" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aJQ-eL-E6Z">
+                                        <rect key="frame" x="179.5" y="285" width="241" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="kpW-hL-HxA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="kpW-hL-HxA"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="5nu-z4-Vxx"/>
+                                        </connections>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tmdbLogo" translatesAutoresizingMaskIntoConstraints="NO" id="D3o-Ph-4KR">
+                                        <rect key="frame" x="179" y="36" width="241" height="241"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="D3o-Ph-4KR" secondAttribute="height" multiplier="1:1" id="QQb-Dv-5Zl"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.7561422413793103" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="aJQ-eL-E6Z" firstAttribute="centerY" secondItem="bKj-Ql-Xwg" secondAttribute="centerY" id="0hD-TR-0JR"/>
+                                    <constraint firstItem="D3o-Ph-4KR" firstAttribute="height" secondItem="bKj-Ql-Xwg" secondAttribute="height" multiplier="0.4" constant="1" id="CJN-MB-WeP"/>
+                                    <constraint firstItem="aJQ-eL-E6Z" firstAttribute="top" secondItem="D3o-Ph-4KR" secondAttribute="bottom" constant="8" id="Jxy-RD-DTp"/>
+                                    <constraint firstItem="hLe-ux-KIP" firstAttribute="centerX" secondItem="bKj-Ql-Xwg" secondAttribute="centerX" id="LLL-YX-uOS"/>
+                                    <constraint firstItem="D3o-Ph-4KR" firstAttribute="centerX" secondItem="bKj-Ql-Xwg" secondAttribute="centerX" id="Qsh-3r-Wqo"/>
+                                    <constraint firstItem="aJQ-eL-E6Z" firstAttribute="centerX" secondItem="bKj-Ql-Xwg" secondAttribute="centerX" id="W7y-dh-MoT"/>
+                                    <constraint firstItem="hLe-ux-KIP" firstAttribute="top" secondItem="aJQ-eL-E6Z" secondAttribute="bottom" constant="44" id="j1h-em-YQJ"/>
+                                    <constraint firstItem="aJQ-eL-E6Z" firstAttribute="width" secondItem="D3o-Ph-4KR" secondAttribute="width" id="nNW-eb-Fzq"/>
+                                    <constraint firstItem="aJQ-eL-E6Z" firstAttribute="width" secondItem="bKj-Ql-Xwg" secondAttribute="width" multiplier="0.9" id="uKh-g7-a6x"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="uKh-g7-a6x"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="D3o-Ph-4KR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="CAE-f7-7Hy"/>
-                            <constraint firstItem="aJQ-eL-E6Z" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="CfH-O8-urn"/>
-                            <constraint firstItem="hLe-ux-KIP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IE0-tr-6eA"/>
-                            <constraint firstItem="D3o-Ph-4KR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R49-Fv-7zP"/>
-                            <constraint firstItem="aJQ-eL-E6Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Z2x-5s-WrM"/>
-                            <constraint firstItem="aJQ-eL-E6Z" firstAttribute="top" secondItem="D3o-Ph-4KR" secondAttribute="bottom" constant="22" id="eNF-VQ-6nK"/>
-                            <constraint firstItem="hLe-ux-KIP" firstAttribute="top" secondItem="aJQ-eL-E6Z" secondAttribute="bottom" constant="22" id="hDJ-zf-lrQ"/>
+                            <constraint firstItem="bKj-Ql-Xwg" firstAttribute="centerX" secondItem="dcW-Rm-3oH" secondAttribute="centerX" id="1qd-RJ-Su3"/>
+                            <constraint firstItem="bKj-Ql-Xwg" firstAttribute="width" secondItem="dcW-Rm-3oH" secondAttribute="width" id="5sA-mJ-yPg"/>
+                            <constraint firstItem="bKj-Ql-Xwg" firstAttribute="centerY" secondItem="dcW-Rm-3oH" secondAttribute="centerY" id="87f-HW-6Pb"/>
+                            <constraint firstItem="bKj-Ql-Xwg" firstAttribute="height" secondItem="dcW-Rm-3oH" secondAttribute="height" id="Nm0-Xt-FKf"/>
+                            <constraint firstItem="dcW-Rm-3oH" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="RI4-ec-nos"/>
+                            <constraint firstItem="dcW-Rm-3oH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RIy-Z4-0Cx"/>
+                            <constraint firstItem="dcW-Rm-3oH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mW3-6E-EOB"/>
+                            <constraint firstItem="dcW-Rm-3oH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="p2T-In-TRc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="h3r-5c-U2g"/>
@@ -371,6 +420,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="TMDb" width="300" height="225"/>
+        <image name="film-reel-2" width="512" height="640"/>
+        <image name="tmdbLogo" width="150" height="150"/>
     </resources>
 </document>
