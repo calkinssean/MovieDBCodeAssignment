@@ -12,8 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
     
-    var moviesArray = [Movie]()
-    var movieAPI: APIController?
+    var searchedText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,15 +21,17 @@ class ViewController: UIViewController {
     
     @IBAction func searchTapped(sender: UIButton) {
         
-        self.moviesArray.removeAll()
-        
         if let text = self.textField.text {
             
-            movieAPI.getMovieJSON(text)
+            let movieSearched = text.stringByReplacingOccurrencesOfString(" ", withString: "+", options: .CaseInsensitiveSearch, range: nil)
             
-            self.moviesArray = movieAPI!.moviesArray
-        
+            if let escapedSearchTerm = movieSearched.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet()) {
+                
+                self.searchedText = escapedSearchTerm
+                
+            }
         }
+        
         performSegueWithIdentifier("ShowMovieTableViewSegue", sender: self)
         
     }
@@ -39,12 +40,9 @@ class ViewController: UIViewController {
         if segue.identifier == "ShowMovieTableViewSegue" {
             
             let controller = segue.destinationViewController as! MovieTableViewController
+            controller.searchedText = self.searchedText
             
-            controller.moviesArray.removeAll()
-            
-            controller.moviesArray = self.moviesArray
         }
     }
-    
 }
 

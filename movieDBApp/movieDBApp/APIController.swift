@@ -19,6 +19,8 @@ class APIController {
         
     }
     
+    init(){}
+    
     func getMovieJSON(searchedMovie: String) {
         
         let urlString = "http://api.themoviedb.org/3/search/movie?query=\(searchedMovie)&api_key=4d1355b8a171e371b07a28ed85403734"

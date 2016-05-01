@@ -17,10 +17,13 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
     var moviesArray = [Movie]()
     var currentMovie = Movie()
     var apiClient: APIController?
+    var searchedText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.apiClient = APIController(delegate: self)
+        apiClient?.getMovieJSON(searchedText)
         
         }
     
@@ -59,7 +62,6 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
     func passMovie(movie: Movie) {
         
         self.moviesArray.append(movie)
-        print("pass movie called")
         
         dispatch_async(dispatch_get_main_queue(), {
             

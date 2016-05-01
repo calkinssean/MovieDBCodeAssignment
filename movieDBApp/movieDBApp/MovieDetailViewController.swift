@@ -10,6 +10,8 @@ import UIKit
 
 class MovieDetailViewController: UIViewController {
 
+    @IBOutlet weak var posterPathImageView: UIImageView!
+   
     @IBOutlet weak var backdropImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieDescriptionLabel: UILabel!
@@ -19,7 +21,9 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.loadImageFromURL("https://image.tmdb.org/t/p/w185\(currentMovie.poster_path)", imageView: self.backdropImageView)
+        self.loadImageFromURL("https://image.tmdb.org/t/p/w185\(currentMovie.poster_path)", imageView: self.posterPathImageView)
+        
+        self.loadImageFromURL("https://image.tmdb.org/t/p/w185\(currentMovie.backdrop_path)", imageView: self.backdropImageView)
         
         self.movieTitleLabel.text = currentMovie.title
         
