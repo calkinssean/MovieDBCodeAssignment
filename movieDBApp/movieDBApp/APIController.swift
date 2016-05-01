@@ -11,8 +11,14 @@ import Foundation
 class APIController {
     
     var moviesArray = [Movie]()
-    var currentMovie: Movie?
-   
+    var delegate: MoviesAppProtocol?
+
+    init(delegate: MovieTableViewController) {
+        
+        self.delegate = delegate
+        
+    }
+    
     func getMovieJSON(searchedMovie: String) {
         
         let urlString = "http://api.themoviedb.org/3/search/movie?query=\(searchedMovie)&api_key=4d1355b8a171e371b07a28ed85403734"
@@ -43,14 +49,16 @@ class APIController {
                                         
                                         let m = Movie(dict: result)
                                         
-                                        self.moviesArray.append(m)
+                                        self.delegate?.passMovie(m)
+                                        
                                     }
                                 }
+                                
                                 
                             } else {
                                 
                                 debugPrint("I couldn't parse the dictionary")
-                                
+                            
                             }
                             
                         } catch {

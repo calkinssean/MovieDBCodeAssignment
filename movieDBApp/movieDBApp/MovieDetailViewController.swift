@@ -10,26 +10,43 @@ import UIKit
 
 class MovieDetailViewController: UIViewController {
 
+    @IBOutlet weak var backdropImageView: UIImageView!
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var movieDescriptionLabel: UILabel!
+    
+    var currentMovie = Movie()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.loadImageFromURL("https://image.tmdb.org/t/p/w185\(currentMovie.poster_path)", imageView: self.backdropImageView)
+        
+        self.movieTitleLabel.text = currentMovie.title
+        
+        self.movieDescriptionLabel.text = currentMovie.overview
+      
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    func loadImageFromURL(urlString: String, imageView: UIImageView) {
+        
+        if urlString.isEmpty == false {
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                if let url = NSURL(string: urlString) {
+                    
+                    if let data = NSData(contentsOfURL: url) {
+                        
+                        let image = UIImage(data: data)
+                        
+                        imageView.image = image
+                    }
+                }
+            })
+        } else {
+            debugPrint("Invalid \(urlString)")
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
