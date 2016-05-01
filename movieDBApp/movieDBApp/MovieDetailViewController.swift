@@ -9,18 +9,20 @@
 import UIKit
 
 class MovieDetailViewController: UIViewController {
-
+    
+    //MARK: - Outlets
     @IBOutlet weak var posterPathImageView: UIImageView!
-   
     @IBOutlet weak var backdropImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieDescriptionLabel: UILabel!
     
+    //MARK: - Properties
     var currentMovie = Movie()
     
+    //MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.loadImageFromURL("https://image.tmdb.org/t/p/w185\(currentMovie.poster_path)", imageView: self.posterPathImageView)
         
         self.loadImageFromURL("https://image.tmdb.org/t/p/w185\(currentMovie.backdrop_path)", imageView: self.backdropImageView)
@@ -28,29 +30,44 @@ class MovieDetailViewController: UIViewController {
         self.movieTitleLabel.text = currentMovie.title
         
         self.movieDescriptionLabel.text = currentMovie.overview
-      
+        
     }
-
-
+    
+    //MARK: - Load image from url
     func loadImageFromURL(urlString: String, imageView: UIImageView) {
         
+        //Check for valid url string
         if urlString.isEmpty == false {
             
-            dispatch_async(dispatch_get_main_queue(), {
+            if let url = NSURL(string: urlString) {
                 
-                if let url = NSURL(string: urlString) {
+                let session = NSURLSession.sharedSession()
+                
+                let task = session.dataTaskWithURL(url, completionHandler: {
                     
-                    if let data = NSData(contentsOfURL: url) {
+                    (data, response, error) in
+                    
+                    //If there is an error, skip the rest of the code
+                    if error != nil {
                         
-                        let image = UIImage(data: data)
-                        
-                        imageView.image = image
+                        debugPrint("An error occurred \(error)")
+                        return
                     }
-                }
-            })
+                    
+                    let theFinalImage = UIImage(data: data!)
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        
+                        imageView.image = theFinalImage
+                    })
+                })
+                task.resume()
+                
+            } else {
+                print("Not a valid url")
+            }
         } else {
             debugPrint("Invalid \(urlString)")
         }
     }
-    
 }

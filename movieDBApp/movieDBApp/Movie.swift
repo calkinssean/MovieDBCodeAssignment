@@ -10,6 +10,7 @@ import Foundation
 
 class Movie {
     
+    //MARK: - Properties
     var poster_path: String = ""
     var overview: String = ""
     var release_date: String = ""
@@ -21,6 +22,7 @@ class Movie {
     init() {
     }
     
+    //MARK: - Initializer
     init(dict: JSONDictionary) {
         
         if let poster_path = dict["poster_path"] as? String {

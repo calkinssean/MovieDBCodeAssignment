@@ -10,38 +10,45 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
-    
-    
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     //MARK: - Load image from URL
     func loadImageFromURL(urlString: String) {
         
+        //check for existing url string
         if urlString.isEmpty == false {
-        
-            dispatch_async(dispatch_get_main_queue(), {
+            
+            if let url = NSURL(string: urlString) {
                 
-                if let url = NSURL(string: urlString) {
+                let session = NSURLSession.sharedSession()
+                
+                let task = session.dataTaskWithURL(url, completionHandler: {
                     
-                    if let data = NSData(contentsOfURL: url) {
+                    (data, response, error) in
+                    
+                    //skip the rest of the code if there is an error
+                    if error != nil {
                         
-                        self.movieImageView.image = UIImage(data: data)
+                        debugPrint("An error occurred \(error)")
+                        return
                     }
-                }
-            })
+                    
+                    let image = UIImage(data: data!)
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        
+                        self.movieImageView.image = image
+                    })
+                })
+                
+                task.resume()
+                
+            } else {
+                print("Not a valid url")
+            }
+            
         } else {
             debugPrint("Invalid \(urlString)")
         }
