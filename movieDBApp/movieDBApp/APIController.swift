@@ -10,6 +10,7 @@ import Foundation
 
 class APIController {
     
+    //MARK: - Properties
     var moviesArray = [Movie]()
     var delegate: MoviesAppProtocol?
 
@@ -19,8 +20,7 @@ class APIController {
         
     }
     
-    init(){}
-    
+    //MARK: - Get movie JSON
     func getMovieJSON(searchedMovie: String) {
         
         let urlString = "http://api.themoviedb.org/3/search/movie?query=\(searchedMovie)&api_key=4d1355b8a171e371b07a28ed85403734"
@@ -33,6 +33,7 @@ class APIController {
                 
                 (data, response, error) in
                 
+                //check for error
                 if error != nil {
                     
                     debugPrint("There was an error dataTaskWithURL")
@@ -49,13 +50,14 @@ class APIController {
                                     
                                     for result in results {
                                         
+                                        //Create a movie object with JSONArray dictionary
                                         let m = Movie(dict: result)
                                         
+                                        //Pass movie to table view controller
                                         self.delegate?.passMovie(m)
                                         
                                     }
                                 }
-                                
                                 
                             } else {
                                 

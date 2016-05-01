@@ -20,7 +20,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -31,7 +30,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.movieDBImageView.alpha = 1
         
         self.textField.text = ""
-        
     }
     
     //MARK: - Search tapped
@@ -48,7 +46,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             textField.resignFirstResponder()
             
             self.animateAndPerformSegue()
-            
         }
         
         return true
@@ -93,7 +90,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     
                     let controller = segue.destinationViewController as! MovieTableViewController
                     controller.searchedText = self.searchedText
-                    
                 }
             }
         }

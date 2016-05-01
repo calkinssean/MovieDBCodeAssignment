@@ -36,6 +36,7 @@ class MovieTableViewCell: UITableViewCell {
                         return
                     }
                     
+                    //create image from data
                     let image = UIImage(data: data!)
                     
                     dispatch_async(dispatch_get_main_queue(), {

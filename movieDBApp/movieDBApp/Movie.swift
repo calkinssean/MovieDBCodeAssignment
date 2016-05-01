@@ -19,12 +19,12 @@ class Movie {
     var backdrop_path: String = ""
     var vote_average: Double = 0
     
-    init() {
-    }
+    init(){}
     
     //MARK: - Initializer
     init(dict: JSONDictionary) {
         
+        //JSON Parsing
         if let poster_path = dict["poster_path"] as? String {
             self.poster_path = poster_path
         } else {
