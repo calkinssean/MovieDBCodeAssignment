@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var movieDBImageView: UIImageView!
     
     var searchedText = ""
     
@@ -19,10 +20,18 @@ class ViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.movieDBImageView.transform = CGAffineTransformIdentity
+        self.movieDBImageView.alpha = 1
+        
+    }
+    
     @IBAction func searchTapped(sender: UIButton) {
         
         if let text = self.textField.text {
-            
+         
             let movieSearched = text.stringByReplacingOccurrencesOfString(" ", withString: "+", options: .CaseInsensitiveSearch, range: nil)
             
             if let escapedSearchTerm = movieSearched.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet()) {
@@ -32,8 +41,19 @@ class ViewController: UIViewController {
             }
         }
         
-        performSegueWithIdentifier("ShowMovieTableViewSegue", sender: self)
-        
+        UIView.animateWithDuration(1, animations: {
+            
+            self.movieDBImageView.transform = CGAffineTransformMakeScale(10, 10)
+            self.movieDBImageView.alpha = 0
+            
+        }) { (animated) in
+            
+            UIView.animateWithDuration(0, animations: {
+                
+                self.performSegueWithIdentifier("ShowMovieTableViewSegue", sender: self)
+                
+            })
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

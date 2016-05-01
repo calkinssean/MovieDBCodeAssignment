@@ -38,6 +38,16 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        if self.moviesArray.count == 0 {
+            
+            let cell = UITableViewCell()
+            
+            cell.textLabel?.text = "Your search didn't match any results"
+            
+            return cell
+            
+        } else {
+        
         let m = moviesArray[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Movie Cell", forIndexPath: indexPath) as! MovieTableViewCell
@@ -47,7 +57,8 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
         cell.loadImageFromURL("https://image.tmdb.org/t/p/w185\(m.poster_path)")
         
         return cell
-        
+            
+        }
     }
     
     //MARK: - Table view delegate
