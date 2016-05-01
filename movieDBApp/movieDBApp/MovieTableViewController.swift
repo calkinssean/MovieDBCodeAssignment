@@ -58,7 +58,7 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         self.currentMovie = moviesArray[indexPath.row]
-        print(currentMovie.title)
+        
         performSegueWithIdentifier("ShowMovieDetailView", sender: self)
         
     }

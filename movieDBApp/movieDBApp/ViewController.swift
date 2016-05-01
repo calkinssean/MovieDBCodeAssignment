@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Outlets
     @IBOutlet weak var textField: UITextField!
@@ -35,18 +35,28 @@ class ViewController: UIViewController {
     //MARK: - Search tapped
     @IBAction func searchTapped(sender: UIButton) {
         
+        self.animateAndPerformSegue()
+    }
+    
+    //MARK: - Text field delegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        if textField == self.textField {
+            
+            textField.resignFirstResponder()
+            
+            self.animateAndPerformSegue()
+            
+        }
+        
+        return true
+    }
+    
+    //MARK: - Animate and perform segue
+    func animateAndPerformSegue() {
+        
         if self.textField.text != "" {
             
-            if let text = self.textField.text {
-                
-                let movieSearched = text.stringByReplacingOccurrencesOfString(" ", withString: "+", options: .CaseInsensitiveSearch, range: nil)
-                
-                if let escapedSearchTerm = movieSearched.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet()) {
-                    
-                    self.searchedText = escapedSearchTerm
-                    
-                }
-            }
             //animation make the image 10x bigger and fade out
             UIView.animateWithDuration(1, animations: {
                 
@@ -61,6 +71,8 @@ class ViewController: UIViewController {
                     
                 })
             }
+        } else {
+            presentAlert("Please enter a movie title")
         }
     }
     
@@ -68,10 +80,39 @@ class ViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowMovieTableViewSegue" {
             
-            let controller = segue.destinationViewController as! MovieTableViewController
-            controller.searchedText = self.searchedText
+            if let text = self.textField.text {
+                
+                //replace spaces with "+" for search
+                let movieSearched = text.stringByReplacingOccurrencesOfString(" ", withString: "+", options: .CaseInsensitiveSearch, range: nil)
+                
+                if let escapedSearchTerm = movieSearched.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet()) {
+                    
+                    self.searchedText = escapedSearchTerm
+                    
+                    let controller = segue.destinationViewController as! MovieTableViewController
+                    controller.searchedText = self.searchedText
+                    
+                }
+            }
+        }
+    }
+    
+    //MARK: - Present alert
+    func presentAlert(message: String) {
+        
+        let alert = UIAlertController(title: "\(message)",
+                                      message: nil,
+                                      preferredStyle: .Alert)
+        
+        let action = UIAlertAction(title: "Ok", style: .Default) { (action: UIAlertAction) -> Void in
             
         }
+        
+        alert.addAction(action)
+        
+        presentViewController(alert,
+                              animated: true,
+                              completion: nil)
     }
 }
 
