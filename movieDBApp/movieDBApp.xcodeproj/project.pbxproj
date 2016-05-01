@@ -47,6 +47,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		141A95BE1CD6A9070065EE60 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				145B22F11CD5460B00FC85A3 /* Assets.xcassets */,
+				145B22EE1CD5460B00FC85A3 /* Main.storyboard */,
+				145B22F31CD5460B00FC85A3 /* LaunchScreen.storyboard */,
+				145B22F61CD5460B00FC85A3 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		145B22DE1CD5460B00FC85A3 = {
 			isa = PBXGroup;
 			children = (
@@ -72,10 +83,7 @@
 				145B23061CD54DD000FC85A3 /* View Controllers */,
 				145B23081CD54DE400FC85A3 /* Views */,
 				145B23091CD54DEC00FC85A3 /* Controllers */,
-				145B22F11CD5460B00FC85A3 /* Assets.xcassets */,
-				145B22EE1CD5460B00FC85A3 /* Main.storyboard */,
-				145B22F31CD5460B00FC85A3 /* LaunchScreen.storyboard */,
-				145B22F61CD5460B00FC85A3 /* Info.plist */,
+				141A95BE1CD6A9070065EE60 /* Supporting Files */,
 			);
 			path = movieDBApp;
 			sourceTree = "<group>";
@@ -342,6 +350,7 @@
 				145B22FB1CD5460B00FC85A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
