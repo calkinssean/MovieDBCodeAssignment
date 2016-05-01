@@ -13,6 +13,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var noResultsLabel: UILabel!
     
     //MARK: - Load image from URL
     func loadImageFromURL(urlString: String) {
