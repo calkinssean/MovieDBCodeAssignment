@@ -10,6 +10,7 @@ import UIKit
 
 //MARK: - Protocol
 protocol MoviesAppProtocol {
+    
     func passMovie(movie: Movie)
 }
 
@@ -25,9 +26,8 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(moviesArray.count)
-        
         self.apiClient = APIController(delegate: self)
+        
         //api call with searched text
         apiClient?.getMovieJSON(searchedText)
         
@@ -46,6 +46,7 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
         return 150
     }
     
@@ -65,8 +66,10 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
             cell.noResultsLabel.hidden = true
             cell.descriptionLabel.hidden = false
             cell.titleLabel.hidden = false
+            
             cell.titleLabel.text = m.title
             cell.descriptionLabel.text = m.overview
+            
             cell.loadImageFromURL("https://image.tmdb.org/t/p/w185\(m.poster_path)")
             
             if m.poster_path == "" {

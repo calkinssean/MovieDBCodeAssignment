@@ -10,6 +10,7 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
+    //MARK: - Outlets
     @IBOutlet weak var noImageLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var movieImageView: UIImageView!
