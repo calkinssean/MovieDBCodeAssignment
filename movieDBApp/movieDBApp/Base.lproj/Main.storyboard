@@ -77,6 +77,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="K8j-cH-Jp3">
+                                            <rect key="frame" x="56" y="56" width="37" height="37"/>
+                                        </activityIndicatorView>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results matched your search." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpx-Eq-epM">
                                             <rect key="frame" x="176" y="8" width="248" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -141,11 +144,13 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstItem="K8j-cH-Jp3" firstAttribute="centerY" secondItem="Oao-ZC-tLB" secondAttribute="centerY" id="3kS-AL-fDB"/>
                                         <constraint firstItem="Oao-ZC-tLB" firstAttribute="top" secondItem="BXZ-dW-cLe" secondAttribute="top" constant="2" id="CFe-Zq-i1O"/>
                                         <constraint firstItem="t8a-tc-KKI" firstAttribute="leading" secondItem="Oao-ZC-tLB" secondAttribute="trailing" constant="2" id="G5t-AZ-Gqc"/>
                                         <constraint firstItem="Oao-ZC-tLB" firstAttribute="centerY" secondItem="BXZ-dW-cLe" secondAttribute="centerY" id="HRc-9t-hQf"/>
                                         <constraint firstAttribute="bottom" secondItem="t8a-tc-KKI" secondAttribute="bottom" constant="2" id="JlN-bg-KZt"/>
                                         <constraint firstAttribute="trailing" secondItem="t8a-tc-KKI" secondAttribute="trailing" constant="2" id="LDB-iw-LNz"/>
+                                        <constraint firstItem="K8j-cH-Jp3" firstAttribute="centerX" secondItem="Oao-ZC-tLB" secondAttribute="centerX" id="Q5D-1Z-qf6"/>
                                         <constraint firstItem="Oao-ZC-tLB" firstAttribute="leading" secondItem="BXZ-dW-cLe" secondAttribute="leading" constant="2" id="VMk-GA-Bzw"/>
                                         <constraint firstAttribute="bottom" secondItem="Oao-ZC-tLB" secondAttribute="bottom" constant="2" id="cxa-yr-QBE"/>
                                         <constraint firstItem="gpx-Eq-epM" firstAttribute="centerX" secondItem="BXZ-dW-cLe" secondAttribute="centerX" id="fuc-wS-zT6"/>
@@ -159,6 +164,8 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="K8j-cH-Jp3" id="j9W-rh-5X4"/>
+                                    <outlet property="backdropView" destination="t8a-tc-KKI" id="KKN-HG-ALy"/>
                                     <outlet property="descriptionLabel" destination="cQj-3z-8Sq" id="1vh-Mw-gs1"/>
                                     <outlet property="movieImageView" destination="Oao-ZC-tLB" id="Yhl-9N-YaN"/>
                                     <outlet property="noResultsLabel" destination="gpx-Eq-epM" id="UfC-Ch-qfj"/>

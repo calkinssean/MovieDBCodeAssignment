@@ -57,6 +57,8 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
             
             let m = moviesArray[indexPath.row]
             
+            cell.activityIndicator.hidden = false
+            cell.backdropView.hidden = false
             cell.noResultsLabel.hidden = true
             cell.descriptionLabel.hidden = false
             cell.titleLabel.hidden = false
@@ -66,9 +68,11 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
             
         } else {
             
+            cell.backdropView.hidden = true
             cell.titleLabel.hidden = true
             cell.descriptionLabel.hidden = true
             cell.noResultsLabel.hidden = false
+            cell.activityIndicator.hidden = true
             
         }
         
