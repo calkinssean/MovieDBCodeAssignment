@@ -30,6 +30,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.movieDBImageView.transform = CGAffineTransformIdentity
         self.movieDBImageView.alpha = 1
         
+        self.textField.text = ""
+        
     }
     
     //MARK: - Search tapped
