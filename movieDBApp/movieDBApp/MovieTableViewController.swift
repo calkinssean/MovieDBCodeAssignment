@@ -55,6 +55,8 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Movie Cell", forIndexPath: indexPath) as! MovieTableViewCell
         
+        cell.imageView!.image = nil
+        
         cell.noImageLabel.hidden = true
         
         if moviesArray.count != 0 {
