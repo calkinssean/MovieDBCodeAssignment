@@ -49,9 +49,12 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
         return 150
     }
     
+    //Setting up the cell
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Movie Cell", forIndexPath: indexPath) as! MovieTableViewCell
+        
+        cell.noImageLabel.hidden = true
         
         if moviesArray.count != 0 {
             
@@ -65,6 +68,12 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
             cell.titleLabel.text = m.title
             cell.descriptionLabel.text = m.overview
             cell.loadImageFromURL("https://image.tmdb.org/t/p/w185\(m.poster_path)")
+            
+            if m.poster_path == "" {
+                
+                cell.noImageLabel.hidden = false
+                cell.activityIndicator.hidden = true
+            }
             
         } else {
             

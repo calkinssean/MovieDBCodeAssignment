@@ -16,6 +16,8 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieDescriptionLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var noImageLabel: UILabel!
+    @IBOutlet weak var noPosterPathLabel: UILabel!
     
     //MARK: - Properties
     var currentMovie = Movie()
@@ -23,6 +25,17 @@ class MovieDetailViewController: UIViewController {
     //MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.currentMovie.backdrop_path == "" {
+            
+            self.noImageLabel.hidden = false
+            
+        }
+        
+        if self.currentMovie.poster_path == "" {
+            
+            self.noPosterPathLabel.hidden = false
+        }
         
         self.loadImageFromURL("https://image.tmdb.org/t/p/w185\(currentMovie.poster_path)", imageView: self.posterPathImageView)
         
