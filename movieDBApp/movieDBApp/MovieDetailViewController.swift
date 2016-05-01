@@ -15,6 +15,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var backdropImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieDescriptionLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
     
     //MARK: - Properties
     var currentMovie = Movie()
@@ -30,6 +31,8 @@ class MovieDetailViewController: UIViewController {
         self.movieTitleLabel.text = currentMovie.title
         
         self.movieDescriptionLabel.text = currentMovie.overview
+        
+        self.ratingLabel.text = "\(currentMovie.vote_average)/10"
         
     }
     

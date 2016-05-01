@@ -58,6 +58,8 @@ class MovieTableViewController: UITableViewController, MoviesAppProtocol {
             let m = moviesArray[indexPath.row]
             
             cell.noResultsLabel.hidden = true
+            cell.descriptionLabel.hidden = false
+            cell.titleLabel.hidden = false
             cell.titleLabel.text = m.title
             cell.descriptionLabel.text = m.overview
             cell.loadImageFromURL("https://image.tmdb.org/t/p/w185\(m.poster_path)")
